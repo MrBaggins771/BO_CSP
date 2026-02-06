@@ -1,7 +1,7 @@
 # BO 3 Updated Finacial Calculator
 
-def question(cost):
-    cost = float(input(f"What is your monthly {cost}? $"))
+def question(bill):
+    cost = float(input(f"What is your monthly {bill}? $"))
     return cost
 
 def percent(bill, income):
