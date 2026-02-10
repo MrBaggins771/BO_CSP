@@ -1,59 +1,11 @@
 # BO & GC 3 team python game
 
-"""kingdom = "The Silent Kingdom"
-name = input("What is thy name: ").strip().title()
-inventory = []
-
-def game():
-    print(f"You made it to {kingdom}, y")
-
-def tutorial():
-    print(f"Hello {name}. Welcome to {kingdom}.")
-    print("This is the tutorial, you will learn what to do and how to do it.")
-    print("If you are met with a choice the answers will be next to the question.") 
-    print("EX: You are met with a fork in the road: A. left B. right.")
-    print("If you obtain an ITEM you can see it when you type INV.")
-    print("To use an item type the item's name for your coice.")
-    print("You are now prepared to go on your adventure")
-    game()
-
-def start():
-    answ = input("Do you wish to play? ").strip().lower()
-    if answ == "yes":
-        print("Good. enjoy your adventure.")
-        tutorial()
-    elif answ == "no":
-        print("Goodbye!")
-    else:
-        print("That's not what I asked for.")
-
-def question(question, answ1, answ2):
-    input(f"{question}. A:{answ1} B:{answ2}")
-
-start()"""
-
-
-# GC
-"""print(f"Hello {name}")
-print(f"My name is Jona, welcome to {kingdom}, where would you like to go")
-choice  = input(f"You can go to the princess tower or king tower, what do you choose {name} (King or princess) ").strip().capitalize()
-if choice == "King":
-    print("You go to the king tower.")
-elif choice == "Princess":
-    print("You go to the princess tower.")
-homeless = input("You see a ugly stupid homeless man, do you A: Give him money or B: Ignore him ").strip().capitalize()
-if homeless == "A":
-    print("The homeless man tells people about your kindness, you obtain one kindness token ")
-elif homeless == "B":
-    print("You gain one hate token.")
-print(f"You arrive at the {choice} tower.")"""
-
 kingdom = "The Silent Kingdom"
 def controls(): 
     print("To open your inventory type 'INV' to see the items you've obtained.")
+    print('To use an item, type the items name.')
     print("Type back in INV to return.")
     print('To move around type "Forwards, Backwards, Left, Right". ')
-    print('To use an item, type the items name.')
     print('If preseneted with a choice, type, "A" or "B".')
     print('If forgetful, type "Help" to see the commands again.')
 
@@ -63,32 +15,36 @@ def question():
 
 def area1():
     print(f"You have made it to Silentville.")
-    print(f"There are 3 buildings, a Shop, a Dungeon, and a Barbershop.")
-    answ = question()
-    return answ
+    print(f"There are 3 buildings, a Shop to your left, a Dungeon behind you, and a Barbershop to your right.")
+    choice = question()
+    return choice
 
 def area2():
     print("You're heading to the castle, you can turn back or go forwards")
     choice = question()
-    if choice == "backwards":
-       print ("You turn back")
-    elif choice == "forwards":
-       print("You begin to face the castle")
-    elif choice == "left" or choice == "right":
-        print("You can't do that here, try forwards or backwards.")
-    else:
-        print("You can't do that here")
 
 def shop():
+    shop_inv = ["Sword"]
     s_value = 0
+    buy_value = 0
     print(f"Welcome to Silentvilles' local shop")
-    stuff = input("Are you looking to buy anything?").strip().lower()
+    stuff = input("Are you looking to buy anything? ").strip().lower()
     if stuff == "yes":
-        s_value += 1
-        print("We've got a lot, but based on your apperance here pal, you're not buying anything at this establishment.")
+        print("Ok, here is what we have to offer.")
+        print(shop_inv)
+        purchase = input("Do you buy it? ").strip().lower()
+        if purchase == "yes":
+            buy_value += 1
+            print("Have a good day.")
+            return buy_value
+        elif purchase == "no":
+            s_value +=1
+            print("What are you doing here then?")
+            return s_value
     elif stuff == "no":
         s_value += 1
-        print("No, brokie")
+        print("What are you doing here then?")
+        return s_value
     else:
         s_value +=1
         print("What are you doing here then?")
@@ -98,48 +54,85 @@ def b_shop():
     b_value = 0
     print(f"Welcome to Silentvilles' Barbershop!")
     print("What are you looking for today?")
-    cut = input("You tryna look fly?").strip().lower()
+    cut = input("You tryna look fly? ").strip().lower()
     if cut == "yes":
         b_value += 1
-        print("Heres your cut yo")
+        print("Here's your cut yo.")
+        print("You leave the Barbershop.")
     elif cut == "no":
         b_value += 1
-        print("Leave my shop, pooron")
+        print("Leave my shop, pooron.")
+        print("You leave the Barbershop.")
     else:
         b_value += 1
-        print("What you talking about yo")
+        print("What you talking about yo?")
+        print("You leave the Barbershop.")
     return b_value
+
+def d_room1():
+    print("You enter the dungeon.")
+    print("The dungeon's ceiling and floor are both waterlogged.")
+    choice = question()
+    return choice
+
+def d_room2():
+    print("You travel deeper into the dungeon and find a large ogre standing in front of the door.")
+    choice = question()
+    return choice
 
 def game():
     name = input("What is your name? ")
     print(f"Hello {name} welcome to {kingdom}.")
     controls()
+    inventory = ["Nothing in INV yet"]
     in_area1 = 1
     in_area2 = 0
+    in_dungeon = 0
+    in_castle = 0
     while in_area1 == 1:
         area1_answ = area1()
         if area1_answ == "backwards":
-            print("You can't do that here.")
+            d_answ = d_room1()
+            if d_answ == "forewards":
+                in_area1 -= 1
+                break
+            elif d_answ == "backwards":
+                area1()
         elif area1_answ == "left":
             print("You go to the shop.")
             s_value = shop()
             if s_value > 0:
+                print("You leave the shop.")
                 area1()
         elif area1_answ == "right":
             print("You go to the Barbershop.")
             b_value = b_shop()
             if b_value > 0:
-                area1
+                area1()
         elif area1_answ == "forwards":
             print("You go fowards.")
+            in_area1 -= 1
+            break
         else:
             print("placement")
-            break
-    in_area1 -= 1
-    if in_area1 != 1:
+    if in_area1 != 1 and in_area2 != 1:
+        in_dungeon +=1
+    while in_dungeon == 1:
+        d2_answ = d_room2()
+    if in_area1 != 1 and in_dungeon != 1:
         in_area2 += 1
-    if in_area2 == 1:
-        area2()
+    while in_area2 == 1:
+        area2_answ = area2()
+        if area2_answ == "backwards":
+            print ("You turn back")
+            in_area2 -= 1
+            in_area1 += 1
+            break
+        elif area2_answ == "forwards":
+            print("You begin to walk to the castle")
+        else:
+            print("You can't do that here")
+        
     
 
 game()
