@@ -3,6 +3,11 @@
 kingdom = "The Silent Kingdom"
 nothing = "Nothing in INV yet"
 inventory = [nothing]
+playing_value = 0
+playing = input("Do you wish to play? ").strip().lower()
+if playing == "yes":
+    playing_value += 1
+
 def controls(): 
     print("To open your inventory type: 'INV' to see the items you've obtained.")
     print('To use an item, type: item name.')
@@ -24,6 +29,13 @@ def area1():
 def area2():
     print("You're heading to the castle, you can turn back or go forwards")
     choice = question()
+    return choice
+
+def castle():
+    print("You have made it to the castle")
+    print("To your left is the king's tower, to your right is the princess' tower, and behind you is the exit")
+    castle_answ = question()
+    return castle_answ
 
 def shop():
     global inventory
@@ -37,10 +49,10 @@ def shop():
         print(shop_inv)
         purchase = input("Do you buy it? ").strip().lower()
         if purchase == "yes":
-            buy_value += 2
+            s_value += 2
             inventory.append("Sword")
             print("Have a good day.")
-            return buy_value
+            return s_value
         elif purchase == "no":
             s_value +=1
             print("What are you doing here then?")
@@ -55,13 +67,15 @@ def shop():
         return s_value
     
 def b_shop():
+    global inventory
     b_value = 0
     print(f"Welcome to Silentvilles' Barbershop!")
     print("What are you looking for today?")
     cut = input("You tryna look fly? ").strip().lower()
     if cut == "yes":
-        b_value += 1
+        b_value += 2
         print("Here's your cut yo.")
+        inventory.append("A fresh cut")
         print("You leave the Barbershop.")
     elif cut == "no":
         b_value += 1
@@ -76,43 +90,69 @@ def b_shop():
 def d_room1():
     print("You enter the dungeon.")
     print("The dungeon's ceiling and floor are both waterlogged.")
+    print("You can go deeper into the dungeon or leave.")
     choice = question()
     return choice
 
 def d_room2():
-    print("You travel deeper into the dungeon and find a large ogre standing in front of the door.")
+    print("You travel deeper into the dungeon and find a large ogre standing in front of a door.")
     choice = question()
     return choice
 
 def d_room_3a():
-    winval = 0
     print("You walk into a bright room, with gold all around.")
-    print("Your greed takes over")
-    print("You've won the game")
-    winval += 1
-    return winval
+    print("Your greed takes over.")
+    print("YOU WIN!")
 
 def d_room_3b():
-   winval = 0
    print("You see the queen alive and well")
    print("You grab the queen and return to the castle.")
-   winval +=1
-   return winval
+   print("The king and the princess praise you.")
+   print("YOU WIN!")
 
 def d_room_3c():
-    loseval = 0
     print("You enter the room, it reeks of rot.")
-    print("You see the queens dead body infront of you.")
-    print("You have lost the game.")
-    loseval +=1
-    return loseval
+    print("You see the queen's dead body infront of you.")
+    print("YOU LOSE! :(")
 
+def king():
+    talked_to_king = 0
+    print("You enter the king's tower")
+    print("You see the King sitting on a chair crying.")
+    print("King: Hello, I-I-I've lost my queen, can you find her?")
+    choice = input("Do you help the king find the queen? Yes or No: ").strip().lower()
+    if choice == "yes":
+        print("Your journey has truly begun, head to the dungeon to find the queen.")
+        talked_to_king += 1
+    elif choice == "no":
+        print("King: THEN GET OUT!")
+    else:
+        print("It's a yes or no question.")
+    return talked_to_king    
+
+#GAGE!!!!! it worksssssssssssssssssss im so happy
+
+def princess():
+    talked_to_princess = 0
+    print("You enter the princess' tower.") 
+    print("The princess is sitting on her bed.")
+    print("Princess: Hello, please please come in")
+    answer = input("Princess: What brings you in these parts? ")
+    print(f"Princess: Ooh {answer} is awesome")
+    print("Princess: Im so very sorry to kill the mood, but my mother has gone missing. Will you find her.")
+    answer2 = input("Will you go find the queen? ")
+    if answer2 == "no":
+        print("Princess: That's fine.")
+    elif answer2 == "yes":
+        print("Princess: Thank you.")
+        talked_to_princess += 1
+    return talked_to_princess
 
 def inv_check(thing):
     global inventory
-    if nothing in inventory:
-        inventory.pop(thing)
-
+    remove = inventory.index(thing)
+    if thing in inventory:
+        inventory.pop(remove)
 
 def game():
     name = input("What is your name? ").strip().title()
@@ -120,58 +160,122 @@ def game():
     controls()
     global inventory
     global nothing
+    global playing_value
     in_area1 = 1
     in_area2 = 0
     in_dungeon = 0
     in_castle = 0
-    while in_area1 == 1:
-        area1_answ = area1()
-        if area1_answ == "backwards":
-            d_answ = d_room1()
-            if d_answ == "forwards":
-                in_area1 -= 1
-                break
-            elif d_answ == "backwards":
-                print("You left the dungeon.")
-        elif area1_answ == "left":
-            print("You go to the shop.")
-            s_value = shop()
-            if s_value == 1:
-                print("You leave the shop.")
-            elif s_value == 2:
-                print("You leave the shop with your new sword.")
-                inv_check(nothing)
-        elif area1_answ == "right":
-            print("You go to the Barbershop.")
-            b_value = b_shop()
-            if b_value == 1:
-                print("You left the Barbershop.")
-        elif area1_answ == "forwards":
-            print("You go fowards.")
-            in_area1 -= 1
-            in_area2 += 1
-            break
-        elif area1_answ == "inv":
-            print(inventory)
-        elif area1_answ == "help":
-            controls()
-    if in_area1 != 1 and in_area2 != 1:
-        in_dungeon +=1
-    while in_dungeon == 1:
-        d2_answ = d_room2()
-    if in_area1 != 1 and in_dungeon != 1:
-        while in_area2 == 1:
-            area2_answ = area2()
-            if area2_answ == "backwards":
-                print ("You turn back")
-                in_area2 -= 1
-                in_area1 += 1
-                break
-            elif area2_answ == "forwards":
-                print("You begin to walk to the castle")
-            else:
-                print("You can not do that here")
-        
-    
+    king_status = 0
+    princess_status = 0
+    while playing_value == 1:
+        if in_area1 == 1:
+            while in_area1 == 1 :
+                area1_answ = area1()
+                if area1_answ == "backwards":
+                    d1_answ = d_room1()
+                    if d1_answ == "forwards":
+                        in_area1 -= 1
+                        in_dungeon += 1
+                        break
+                    elif d1_answ == "backwards":
+                        print("You left the dungeon.")
+                elif area1_answ == "left":
+                    print("You go to the shop.")
+                    s_value = shop()
+                    if s_value == 1:
+                        print("You leave the shop.")
+                    elif s_value == 2:
+                        print("You leave the shop with your new sword.")
+                        inv_check(nothing)
+                elif area1_answ == "right":
+                    print("You go to the Barbershop.")
+                    b_value = b_shop()
+                    if b_value == 1:
+                        print("You leave the Barbershop.")
+                    elif b_value == 2:
+                        print("You leave the Barbershop with a new cut.")
+                        inv_check(nothing)
+                elif area1_answ == "forwards":
+                    print("You go fowards.")
+                    in_area1 -= 1
+                    in_area2 += 1
+                    break
+                elif area1_answ == "inv":
+                    print(inventory)
+                elif area1_answ == "help":
+                    controls()
+                else:
+                    print("You cannot do that now.")
+        if in_dungeon == 1:
+            while in_dungeon == 1:
+                d2_answ = d_room2()
+                if d2_answ == "sword" and "Sword" in inventory:
+                    print("You slay the ogre.")
+                    if king_answ != 1 and princess_answ != 1:
+                        d_room_3a()
+                        playing_value -= 1
+                        break
+                    elif king_answ != 1 and princess_answ == 1:
+                        d_room_3b()
+                        playing_value -= 1
+                        break
+                    elif king_answ == 1 and princess_answ != 1:
+                        d_room_3c()
+                        playing_value -= 1
+                        break
+                    elif king_answ == 1 and princess_answ == 1:
+                        d_room_3c()
+                        playing_value -= 1
+                        break
+                elif d2_answ == "a fresh cut" and "A fresh cut" in inventory:
+                    print("The ogre sees your fresh cut.")
+                    print("You have successfuly rizzed up the ogre, YOU WIN!")
+                    playing_value -= 1
+                    break
+                elif d2_answ == "backwards":
+                    print("You exit the dungeon.")
+                    in_dungeon -= 1
+                    in_area1 += 1
+                elif d2_answ == "forwards":
+                    print("You walk forwards but the ogre stops you.")
+                elif d2_answ == "inv":
+                    print(inventory)
+                elif d2_answ == "help":
+                    controls()
+        if in_area2 == 1:
+            while in_area2 == 1:
+                area2_answ = area2()
+                if area2_answ == "backwards":
+                    print ("You turn back")
+                    in_area2 -= 1
+                    in_area1 += 1
+                elif area2_answ == "forwards":
+                    in_area2 -= 1
+                    in_castle += 1
+                elif area2_answ == "inv":
+                    print(inventory)
+                elif area2_answ == "help":
+                    controls()
+        if in_castle == 1:
+            while in_castle == 1:
+                c_answ  = castle()
+                if c_answ == "forwards":
+                    print("You cannot do that here.")
+                elif c_answ == "backwards":
+                    print("You leave the castle.")
+                    in_castle -= 1
+                    in_area2 += 1
+                elif c_answ == "left":
+                    king_answ = king()
+                    if king_answ == 1:
+                        king_status += 1
+                elif c_answ == "right":
+                    princess_answ = princess()
+                    if princess_answ == 1:
+                        princess_status += 1
+                elif c_answ == "inv":
+                    print(inventory)
+                elif c_answ == "help":
+                    controls()
 
 game()
