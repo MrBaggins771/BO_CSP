@@ -1,4 +1,5 @@
 # BO & GC 3 team python game
+# FOR MS.LAROSE BO did the game function and lines 5-12 along with comunication between funtions and GC did the rest
 
 kingdom = "The Silent Kingdom"
 nothing = "Nothing in INV yet"
@@ -7,6 +8,8 @@ playing_value = 0
 playing = input("Do you wish to play? ").strip().lower()
 if playing == "yes":
     playing_value += 1
+else:
+    print("If you want to play kill terminal and try again.")
 
 def controls(): 
     print("To open your inventory type: 'INV' to see the items you've obtained.")
@@ -76,15 +79,12 @@ def b_shop():
         b_value += 2
         print("Here's your cut yo.")
         inventory.append("A fresh cut")
-        print("You leave the Barbershop.")
     elif cut == "no":
         b_value += 1
         print("Leave my shop, pooron.")
-        print("You leave the Barbershop.")
     else:
         b_value += 1
         print("What you talking about yo?")
-        print("You leave the Barbershop.")
     return b_value
 
 def d_room1():
@@ -129,8 +129,6 @@ def king():
     else:
         print("It's a yes or no question.")
     return talked_to_king    
-
-#GAGE!!!!! it worksssssssssssssssssss im so happy
 
 def princess():
     talked_to_princess = 0
