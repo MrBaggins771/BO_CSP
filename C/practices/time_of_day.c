@@ -17,4 +17,5 @@ int main(){
     }else{
         printf("Please put a valid time");
     }
+    return 0;
 }
