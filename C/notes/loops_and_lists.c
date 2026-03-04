@@ -6,6 +6,7 @@
 #include <time.h>
 
 int main(){
+    // WHILE LOOPS
     // while EX 1
     int i = 1;
     while (i <= 10){
@@ -49,5 +50,33 @@ int main(){
     // list EX 3
     char names[][20] = {"ALex", "Katie", "Andrew", "Vienna", "Tia", "Treyson", "Xavier", "Jake"}; // first box is number of items second is max characters in the strings (required).
     printf("%s\n", names[5]);
+
+    // FOR LOOPS
+    // for EX 1
+    for(int i = 20; i >= 0; i--){
+        printf("%d ", i);
+    }
+    
+    // for EX 2
+    int guess = 0;
+    for(int num = rand() % 20 + 1; num != guess; num = num){
+        printf("\nGuess a number between 1 and 20: ");
+        scanf("%d", &guess);
+        if (guess == num){
+            printf("\nYou did it. ");
+            break;
+        }else if (guess < num){
+            printf("Higher");
+        }else{
+            printf("Lower");
+        }
+    }
+    printf("Game done.\n");
+    
+    // for EX 3
+    int length = sizeof(names)/sizeof(names[0]);
+    for(int x = 0; x < length; x++){
+        printf("%s LaRose\n", names[x]);
+    }
     return 0;
 }
