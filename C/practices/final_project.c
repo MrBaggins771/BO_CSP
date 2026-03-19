@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
+#include <stdbool.h>
 
 char spot1 = '_';
 char spot2 = '_';
@@ -14,9 +14,11 @@ char spot6 = '_';
 char spot7 = '_';
 char spot8 = '_';
 char spot9 = '_';
+int p_win_check = 0;
+int b_win_check = 0;
 
 void grid (){
-    printf("_%c_|_%c_|_%c_\n", spot1, spot2, spot3);
+    printf("\n_%c_|_%c_|_%c_\n", spot1, spot2, spot3);
     printf("_%c_|_%c_|_%c_\n", spot4, spot5, spot6);
     printf(" %c | %c | %c \n", spot7, spot8, spot9);
 }
@@ -29,7 +31,7 @@ int bot(){
 
 int player(){
     int answer;
-    printf("What spot do you want to enter (1-9):");
+    printf("\nWhat spot do you want to enter (1-9): ");
     scanf("%d", &answer);
     return answer;
 }
@@ -145,33 +147,99 @@ int big_spot_check(int answer, int bot_or_player){
     }
 }
 
-void check_win(){
-    if ())
+int check_win(){
+    if (spot1 == 'X' && spot2 == 'X' && spot3 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot4 == 'X' && spot5 == 'X' && spot6 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot7 == 'X' && spot8 == 'X' && spot9 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot1 == 'X' && spot4 == 'X' && spot7 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot2 == 'X' && spot5 == 'X' && spot8 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot3 == 'X' && spot6 == 'X' && spot9 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot1 == 'X' && spot5 == 'X' && spot9 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else if (spot3 == 'X' && spot5 == 'X' && spot7 == 'X'){
+        printf("Player wins!");
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int bot_check_win(){
+     if (spot1 == 'O' && spot2 == 'O' && spot3 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot4 == 'O' && spot5 == 'O' && spot6 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot7 == 'O' && spot8 == 'O' && spot9 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot1 == 'O' && spot4 == 'O' && spot7 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot2 == 'O' && spot5 == 'O' && spot8 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot3 == 'O' && spot6 == 'O' && spot9 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot1 == 'O' && spot5 == 'O' && spot9 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else if (spot3 == 'O' && spot5 == 'O' && spot7 == 'O'){
+        printf("Bot wins! It's random gentor you bum.");
+        return 1;
+    }else{
+        return 0;
+    }
 }
 
 int main(){
     int round = 0;
 
     while(round <= 10){
-        int player_answer = player();
-        int big_check = big_spot_check(player_answer, 0);
-        if (big_check == 1){
-            grid();
-            round++;
-        }else{
-            printf("")
+        while(true){
+            int player_answer = player();
+            int big_check = big_spot_check(player_answer, 0);
+            if (big_check == 1){
+                grid();
+                int p_win_check = check_win();
+                round++;
+                break;
+            }else{
+                printf("Not valid\n");
+            }
         }
+    if (p_win_check == 1){
+        break;
     }
-
-    //input and outputs area of rodot
-    srand(time(NULL));
-    int x = rand() % 9;
-    printf("%d\n", x);
-
-    int player;
-    printf("what spot do you want to enter (1-9):");
-    scanf("%d", player);
-
+        while (true){
+            int bot_answer = bot();
+            int big_check_bot = big_spot_check(bot_answer, 1);
+            if (big_check_bot == 1){
+                grid();
+                int b_win_check = bot_check_win();
+                round++;
+                break;
+            }
+        }
+    if (b_win_check == 1){
+        break;
+    }
+    }
 
     return 0;
 }
