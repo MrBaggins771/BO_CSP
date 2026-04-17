@@ -4,6 +4,10 @@
     <head>
         <title>Advanced HTML notes</title>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Honk:MORF@15&display=swap" rel="stylesheet">
+
             <!--Embeded CSS-->
             <!--Selectors change parts of HTML, properties are what about the HTML, value is the change.-->
             <!--The declaration is the entire line with property and value.-->
@@ -14,20 +18,27 @@
             <!--You can change size in the style-->
             <!--having changing sizes helps with different screen sizes-->
             <style>
-                *{
+                body{
                     background-color: rgb(131, 245, 141);
-                    
+                    font-family: "Honk", system-ui;
+                    font-optical-sizing: auto;
+                    font-weight: 400;
+                    font-style: normal;
+                    font-variation-settings:
+                        "MORF" 15,
+                        "SHLN" 50;
                 }
                 p{
                     background-color: black;
                     color: aqua;
                     background-color: teal;
                     text-align: right;
-                    font-size: 1em;
+                    font-size: 1.5em;
                 }
                 #ordered-lists{
                     background-color: bisque;
                     color: chocolate;
+                    margin-right: 10px;
                 }
                 .odd{
                     background-color: green;
@@ -42,10 +53,40 @@
                     width: 25%;
                     height: 25%;
                 }
+                #bolded{
+                    font-weight: bold;
+                }
+                #box{
+                    background-color: blue;
+                    height: 180px;
+                    width: 200px;
+                    margin: 20px;
+                    padding-top: 20px;
+                }
+                #box-wrapper{
+                    display: flex;
+                    justify-content: center;
+                }
+                .list-wrapper{
+                    display: grid;
+                    grid-template-columns: 50% 50%;
+                }
+                .image{
+                    display: block;
+                    margin: auto;
+                    width: 50%;
+                }
             </style>
     </head>
     <body>
+        
         <h1>HTML Advanced notes</h1>
+
+        <div id="box-wrapper">
+        <div id="box"></div>
+        </div>
+
+        <div class="list-wrapper">
         <!--The two types of lists are ordered and unordered lists-->
         <!--The tree different tags are OL UL and LI-->
         <div id="ordered-lists">
@@ -57,9 +98,9 @@
             <li>d</li>
         </ol>
         </div>
-        <br>
+
         <div id="unordered-lists">
-        <p>Unordered list</p>
+        <p>Unordered <span id="bolded">list</span></p>
         <ul style="list-style-type:square">
             <!--This is an atribute (extra info for opening tag that makes the tag do more)-->
             <!--Atributes are written with the atribute name ="atribute content"-->
@@ -68,11 +109,14 @@
             <li class="odd">Banana</li>
         </ul>
         </div>
+        </div>
+
         <a href="https://ucas-edu.instructure.com/courses/4362/assignments/89779" target="_blank">Assignment Page</a>
         <br>
+        <div class="image">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/250px-Smiley.svg.png" alt="smile" height="150px"> <!--IMG tag is used to include an image (src and alt are required)-->
         <!--Self closing tags do not require a closing tag and close themselves-->
-        <div style="background-color: blueviolet; height: 100px; width: 200px;"></div>
+        </div>
     
         <!--CSS notes (Cascading style sheets)-->
         <!--Inline styles are done in the HTML opening tag. BAD PRACTICE-->
