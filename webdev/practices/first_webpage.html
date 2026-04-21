@@ -1,55 +1,81 @@
 <!--BO 3 CSP My first webpage-->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    
+<head>
         <title>My first webpage</title>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap" rel="stylesheet">
         <style>
             body{
                 background-color: rgb(235, 198, 167);
-                color: rgb(151, 85, 38);
+                color: rgb(145, 82, 37);
+            }
+            .jacques-francois-shadow-regular {
+                font-family: "Jacques Francois Shadow", serif;
+                font-weight: 400;
+                font-style: normal;
             }
             h1{
                 text-align: center;
+                background-color: rgb(247, 230, 199);
+                padding-top: 30px;
+                padding-bottom: 20px;
+                margin-top: -8px;
+                margin-left: -8px;
+                margin-right: -8px;
             }
-            h3{
-                text-align: center;
-            }
-            p{
-                text-align: center;
+            #big-div{
+                background-color: rgba(233, 161, 68, 0.281);
+                margin-left: 20%;
+                margin-right: 20%;
+                padding: 2%;
             }
             img{
                 width: 30%;
+                display: block;
+                margin: auto;
+            }
+            .video{
+                display: flex;
+                justify-content: center;
             }
         </style>
     </head>
+    
     <body>
-        <h1>Cheese</h1>
-        
-        <div id="history">
-        <h3>History</h3>
-        <p>Cheese began in ancient mesopotaimia and from there spread across the world. Cheese has impacted cultures around the world. It has become a staple in modern day cuisine.</p>
-        <a href="https://www.youtube.com/watch?v=QKae1k1BDdA" target="_blank">TED-Ed video on cheese history</a>
-        <br>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Parmigiano_reggiano_factory.jpg/250px-Parmigiano_reggiano_factory.jpg" alt="cheese">
-        </div>
-        
-        <div id="Regions">
-        <h3>Regions</h3>
-        <p>Cheese is in every cuisine on the entire planet. Every country and region has a cheese of their own.</p>
-        <br>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Meteosat-12-fci-march-equinox-2025-noon.jpg/330px-Meteosat-12-fci-march-equinox-2025-noon.jpg" alt="earth">
+        <div id="web-head">
+            <h1 class="jacques-francois-shadow-regular">Cheeses Of Time</h1>
         </div>
 
-        <div id="Cheeses">
-        <h3>Cheeses</h3>
-        <ul>
-            <li>Parmigiano Reggiano</li>
-            <li>Paneer</li>
-            <li>Gouda</li>
-            <li>Feta</li>
-            <li>Raclette du Valais</li>
-        </ul>
+        <div id="big-div">
+            <div id="history">
+                <h3>History</h3>
+                <p>Cheese began in ancient mesopotaimia and from there spread across the world. Cheese has impacted cultures around the world. It has become a staple in modern day cuisine.</p>
+                <a href="https://www.youtube.com/watch?v=QKae1k1BDdA" target="_blank" class="video">TED-Ed video on cheese history</a>
+                <br>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Parmigiano_reggiano_factory.jpg/250px-Parmigiano_reggiano_factory.jpg" alt="cheese">
+            </div>
+        
+            <div id="Regions">
+                <h3>Regions</h3>
+                <p>Cheese is in every cuisine on the entire planet. Every country and region has a cheese of their own.</p>
+                <br>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Meteosat-12-fci-march-equinox-2025-noon.jpg/330px-Meteosat-12-fci-march-equinox-2025-noon.jpg" alt="earth">
+            </div>
+
+            <div id="Cheeses">
+                <h3>Cheeses</h3>
+                <ul>
+                    <li>Parmigiano Reggiano</li>
+                    <li>Paneer</li>
+                    <li>Gouda</li>
+                    <li>Feta</li>
+                    <li>Raclette du Valais</li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
