@@ -8,6 +8,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap" rel="stylesheet">
+        <script>
+
+        </script>
         <style>
             body{
                 background-color: rgb(235, 198, 167);
@@ -32,15 +35,28 @@
                 margin-left: 20%;
                 margin-right: 20%;
                 padding: 2%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
             }
-            img{
-                width: 30%;
-                display: block;
-                margin: auto;
+            #history{
+                grid-area: 1/1/2/2;
             }
-            .video{
-                display: flex;
-                justify-content: center;
+            #regions{
+                grid-area: 2/1/3/2;
+            }
+            #cheeses{
+                grid-area: 3/1/4/2;
+            }
+            #cheese_img{
+                grid-area: 1/2/2/3;
+                padding: 15%;
+                width: 80%;
+            }
+            #earth_img{
+                grid-area: 2/2/3/3;
+                padding: 15%;
+                width: 80%;
             }
         </style>
     </head>
@@ -56,17 +72,18 @@
                 <p>Cheese began in ancient mesopotaimia and from there spread across the world. Cheese has impacted cultures around the world. It has become a staple in modern day cuisine.</p>
                 <a href="https://www.youtube.com/watch?v=QKae1k1BDdA" target="_blank" class="video">TED-Ed video on cheese history</a>
                 <br>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Parmigiano_reggiano_factory.jpg/250px-Parmigiano_reggiano_factory.jpg" alt="cheese">
             </div>
+            
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Parmigiano_reggiano_factory.jpg/250px-Parmigiano_reggiano_factory.jpg" alt="cheese" id="cheese_img">
         
-            <div id="Regions">
+            <div id="regions">
                 <h3>Regions</h3>
-                <p>Cheese is in every cuisine on the entire planet. Every country and region has a cheese of their own.</p>
-                <br>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Meteosat-12-fci-march-equinox-2025-noon.jpg/330px-Meteosat-12-fci-march-equinox-2025-noon.jpg" alt="earth">
+                <p>Cheese is in every cuisine on the entire planet. Every country and region has a cheese of their own.</p>    
             </div>
+            
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Meteosat-12-fci-march-equinox-2025-noon.jpg/330px-Meteosat-12-fci-march-equinox-2025-noon.jpg" alt="earth" id="earth_img">
 
-            <div id="Cheeses">
+            <div id="cheeses">
                 <h3>Cheeses</h3>
                 <ul>
                     <li>Parmigiano Reggiano</li>
@@ -75,6 +92,10 @@
                     <li>Feta</li>
                     <li>Raclette du Valais</li>
                 </ul>
+            </div>
+            
+            <div id="super_secret">
+                
             </div>
         </div>
     </body>
