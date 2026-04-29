@@ -9,7 +9,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap" rel="stylesheet">
         <script>
-
+            function show(){
+                var x = document.getElementById("super_secret");
+                if (x.style.display == "none"){
+                    x.style.display = "flex";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            function hover(){
+                var x = document.getElementById("earth_img")
+            }
         </script>
         <style>
             body{
@@ -58,6 +68,15 @@
                 padding: 15%;
                 width: 80%;
             }
+            #super_secret{
+                display: none;
+                align-items: flex-end;
+                justify-content: center;
+            }
+            #btn{
+                background-color: rgba(233, 162, 68, 0);
+                border: 0px solid;
+            }
         </style>
     </head>
     
@@ -95,8 +114,9 @@
             </div>
             
             <div id="super_secret">
-                
+                <p>Could you tell that I like cheese?</p>
             </div>
+            <button id="btn" onclick="show()">secret</button>
         </div>
     </body>
 </html>
