@@ -3,8 +3,174 @@
     <head>
         <title>UTAH staycation</title>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script>
+            function show(){
+                var x = document.getElementById("extra");
+                if(x.style.display == "none"){
+                    x.style.display = "grid";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            function over(){
+                var x = document.getElementById("day_flats");
+                var y = document.getElementById("dusk_flats");
+                if(x.src == "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Winter_at_Bonneville_Salt_Flats.jpg/330px-Winter_at_Bonneville_Salt_Flats.jpg"){
+                    x.src = y.src;
+                } else {
+                    x.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Winter_at_Bonneville_Salt_Flats.jpg/330px-Winter_at_Bonneville_Salt_Flats.jpg";
+                }
+            }
+            function out(){
+                var x = document.getElementById("day_flats");
+                var y = document.getElementById("dusk_flats");
+                if(x.src == "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonneville_Salt_Flats_%2817235453660%29.jpg/250px-Bonneville_Salt_Flats_%2817235453660%29.jpg"){
+                    x.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Winter_at_Bonneville_Salt_Flats.jpg/330px-Winter_at_Bonneville_Salt_Flats.jpg";
+                } else {
+                    x.src = y.src;
+                }
+            }
+        </script>
+        <style>
+            body{
+                /*Thank you W3 schools*/
+                background-image: url('https://travelnevada.com/wp-content/uploads/2020/11/Bonneville_Featured-scaled.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                color: rgb(23, 23, 92);
+                display: grid;
+                grid-template-columns: 1fr 3fr 1fr;
+                font-size: 2vw;
+            }
+            .rye-regular {
+                font-family: "Rye", serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .roboto {
+                font-family: "Roboto", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+                font-variation-settings:
+                    "wdth" 100;
+            }
+            #big_div{
+                background-color: rgba(129, 129, 221, 0.829);
+                display: grid;
+                grid-column: 2/3;
+                margin-top: 20px;
+                padding-left: 20px;
+                padding-right: 10px;
+                padding-top: 1.5%;
+                padding-bottom: 2%;
+            }
+            h1{
+                text-align: center;
+                background-color: rgb(116, 116, 216);
+            }
+            #main{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            #p1{
+                grid-area: 1/1/2/3;
+            }
+            #event_list{
+                grid-area: 2/1/3/2;
+            }
+            #cycle_img{
+                grid-area: 2/2/3/3;
+                width: 95%;
+                padding: 2%;
+            }
+            #day_flats{
+                width: 90%;
+                grid-area: 3/1/4/2;
+                
+            }
+            #p2{
+                grid-area: 3/2/4/3;
+            }
+            #extra{
+                display: none;
+                align-content: flex-end;
+            }
+            h3{
+                text-align: center;
+            }
+            #history{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+            }
+            #ehh3{
+                grid-area: 1/1/2/3;
+            }
+            #p3{
+                grid-area: 2/1/3/2;
+            }
+            #sunrise{
+                grid-area: 2/2/3/3;
+                width: 80%;
+                margin-left: 20px;
+            }
+            #btn{
+                background-color: rgb(116, 116, 216);
+                border: none;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-top: 2%;
+            }
+            #dusk_flats{
+                width: 50%;
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <h1>Utah Salt Flats</h1>
+        
+        <div id="big_div">
+            <h1 class="rye-regular">Bonneville Salt Flats</h1>
+            <div id="main">
+                <p class="roboto" id="p1">At the Bonneville Salt Flats, land speed records break year after year. The flatness and density of the ground allows vehicles to accelarate better than any road. Racing events happen all the time at the salt flats. There are five major events that take place in Bonneville.</p>
+                <ul id="event_list" class="roboto">
+                    <li>Speed Week (Mid August)</li>
+                    <li>World of Speed (September)</li>
+                    <li>World Finals (Early October)</li>
+                    <li>Bub Motorcycle Speed Trials (Mid August)</li>
+                    <li>Mike Cook ShootOut (September)</li>
+                </ul>
+                <p class="roboto" id="p2">If you want to enter or spectate any of these events tickets cost anywhere from 25-30$. Simply going to the salt flats and taking in the view is free. I would recomend going after a light rain (seen to the left).</p>
+                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Winter_at_Bonneville_Salt_Flats.jpg/330px-Winter_at_Bonneville_Salt_Flats.jpg" alt="day_wet_flats" id="day_flats" onmouseover="over()" onmouseout="out()">
+            
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Michael_Sturtz_riding_Die_Moto.jpg/250px-Michael_Sturtz_riding_Die_Moto.jpg" alt="cycle" id="cycle_img">
+            </div>
+            
+            <div id="extra">
+                <div id="history">
+                    <h3 class="rye-regular" id="ehh3">Extra Facts and History</h3>
+                    <p class="roboto" id="p3">The Bonneville Salt Flats were named after Benjamin Bonneville by geologist Grove Karl Gilbert. Bonneville explored the area in the 1830s. Bill Rishel and two businessmen tested the salt for diving in 1907. They took a Pierce-Arrow onto the flats. Over time the flats became a set for many famous films like Top Gun and Pirates of the Caribbean.</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Sunset_at_Salt_Flats.jpg/250px-Sunset_at_Salt_Flats.jpg" alt="sunrise" id="sunrise">
+                </div>
+
+                <div id="records">
+                    <h3 class="rye-regular">Land Speed Records</h3>
+                    <p class="roboto">In 1914 Teddy Tetzlaff broke the land speed record at 142mph on August 12th. Most of the speed records after Teddy's were in the 60s. In 1935 Malcolm Camlbell broke the previous record at 301mph. George Eyston went 311mph in 1937. The year after he broke his previous going 345mph. John Cobb went 350mph the month after on September 15th, 1938. The day after George Eyston took his record back going 357mph. Capping off the decade John Cobb went 369mph. 8 years later he went 394mph. A lot of innovation happened since the last land speed record in the salt flats. They went from internal combution engines to turbojet propulsion. Up until 1983 every turbojet land speed record was broken in the salt flats. The last record was held by Gary Gabelich at 630mph in October of 1970.</p>
+                </div>                
+            </div>
+            <button id="btn" onclick="show()">\/</button>
+            
+        </div>
+        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonneville_Salt_Flats_%2817235453660%29.jpg/250px-Bonneville_Salt_Flats_%2817235453660%29.jpg" alt="dusk_wet_flats" id="dusk_flats">
     </body>
 </html>
